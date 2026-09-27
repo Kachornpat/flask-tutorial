@@ -127,4 +127,13 @@ header .action {
   resize: vertical;
 }
 
+input.danger {
+  color: #ccc2f2e;
+}
+
+input[type=submit] {
+  align-self: start; 
+  min-width: 10em;
+}
+
 
