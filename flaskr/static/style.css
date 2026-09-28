@@ -127,9 +127,11 @@ header .action {
   resize: vertical;
 }
 
-input.danger {
-  color: #ccc2f2e;
+input.danger,
+button.danger {
+  color: #cc2f2e;
 }
+
 
 input[type=submit] {
   align-self: start; 
