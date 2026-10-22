@@ -28,7 +28,7 @@ def create():
         error = None
         
         if not title:
-            error = 'Title is required'
+            error = 'Title is required.'
            
         if error is not None:
             flash(error)
@@ -74,7 +74,7 @@ def update(id):
         error = None
         
         if not title:
-            error = 'Title is required'
+            error = 'Title is required.'
         
         if error is not None:
             flash(error)
@@ -97,3 +97,13 @@ def delete(id):
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('blog.index'))
+
+def test_delete(client, auth, app):
+    auth.login()
+    response = client.post('/1/delete')
+    assert response.headers["Location"] == "/"
+    
+    with app.app_context():
+        db = get_db()
+        post = db.execute('SELECT * FROM post WHERE id = 1').fetchone()
+        assert post is None
