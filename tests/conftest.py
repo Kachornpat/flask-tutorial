@@ -7,7 +7,7 @@ from flaskr.db import get_db, init_db
 
 with open(os.path.join(os.path.dirname(__file__), 'data.sql'), 'rb') as f:
     _data_sql = f.read().decode('utf8')
-    
+
 
 @pytest.fixture
 def app():
@@ -26,7 +26,7 @@ def app():
     
     os.close(db_fd)
     os.unlink(db_path)
-    
+
 @pytest.fixture
 def client(app):
     return app.test_client()
@@ -47,7 +47,7 @@ class AuthActions(object):
     
     def logout(self):
         return self._client.get('/auth/logout')
-    
+
 
 @pytest.fixture
 def auth(client):
